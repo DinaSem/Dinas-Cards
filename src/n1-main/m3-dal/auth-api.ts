@@ -2,7 +2,7 @@ import {AxiosResponse} from "axios";
 import {instance} from "./instance";
 import {UserDataType} from "../m2-bll/loginReducer";
 
-// const model1: RecoveryModelType = {
+// const model: RecoveryModelType = {
 //     email: '',
 //     from: "test-front-admin <neispravimayas1@gmail.com>",
 //     message: `<div style="background-color: lime; padding: 15px">
@@ -17,14 +17,29 @@ export const authAPI = {
     login(email: string, password: string, rememberMe: boolean) {
         return instance.post('auth/login', {email, password, rememberMe})
     },
-    logout(){
+    logout() {
         return instance.delete('auth/me', {})
     },
-    me(){
+    me() {
         return instance.post('auth/me', {})
+    },
+    profile(email: string, avatar: string) {
+        return instance.post('auth/me', {email, avatar})
     },
     register(email: string, password: string) {
         return instance.post('auth/register', {email, password})
     },
+    forgot(model: any) {
+        return instance.post('auth/forgot', {model})
+    },
+    // newpass(password: string, resetPasswordToken: string) {
+    //     return instance.post('auth/set-new-password', {password, resetPasswordToken})
+    // },
 
+
+}
+export type RecoveryModelType = {
+    email: string
+    from: string
+    massage: string
 }
