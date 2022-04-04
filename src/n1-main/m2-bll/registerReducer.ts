@@ -39,7 +39,6 @@ export const registerReducer = (state: InitialStateType = initialState, action: 
     }
 }
 export type setRegisterACType = ReturnType<typeof setRegisterAC>
-
 type ActionsType = setRegisterACType
 
 

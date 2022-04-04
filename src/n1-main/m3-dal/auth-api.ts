@@ -28,11 +28,13 @@ export const authAPI = {
     register(email: string, password: string) {
         return instance.post('auth/register', {email, password})
     },
-    forgot(model: any) {
-        return instance.post('auth/forgot', {model})
+    forgot(email:string) {
+        return instance.post<{ model: RecoveryModelType, }, AxiosResponse<RecoverPassResponseType>>('auth/forgot', {...model, email:email})
     },
-    newpass(password: string, resetPasswordToken: string) {
-        return instance.post('auth/set-new-password', {password, resetPasswordToken})
+    newpass(password: string, resetPasswordToken: string | undefined) {
+        return instance.post <{ password: string, resetPasswordToken: string | undefined },
+            AxiosResponse<RecoverPassResponseType>>
+        (`/auth/set-new-password`, {password, resetPasswordToken})
     },
 
 

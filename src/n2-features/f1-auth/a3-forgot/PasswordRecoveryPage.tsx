@@ -1,16 +1,21 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useCallback, useState} from 'react';
 import {NavLink} from "react-router-dom";
 import {PATH} from "../../../n1-main/m1-ui/routes/Paths";
+import {forgotTC} from "../../../n1-main/m3-dal/recoverReducer";
+import {useDispatch} from "react-redux";
 
 
 const PasswordRecoveryPage = () => {
 
     const[email, setEmail]= useState('')
+    const dispatch = useDispatch()
+
     const emailHandler = (e:ChangeEvent<HTMLInputElement>) => {
         setEmail(e.currentTarget.value)
     }
-        const emailOnClickHandler = () => {
-        }
+        const emailOnClickHandler = useCallback(() => {
+            dispatch(forgotTC(email))
+        }, [dispatch, email])
 
     return (
         <div>
