@@ -2,16 +2,15 @@ import {AxiosResponse} from "axios";
 import {instance} from "./instance";
 import {UserDataType} from "../m2-bll/loginReducer";
 
-// const model: RecoveryModelType = {
-//     email: '',
-//     from: "test-front-admin <neispravimayas1@gmail.com>",
-//     message: `<div style="background-color: lime; padding: 15px">
-//                         Password recovery link for project "Cards for test":
-//                         <a href='https://vladimirgromyko.github.io/cards-for-test#/change-pass/$token$'>
-// <!--                        <a href='http://localhost:3000/cards-for-test#/change-pass/$token$'>-->
-//                         link</a>
-//                        </div >`
-// }
+const model: RecoveryModelType = {
+    email: '',
+    from: "test-front-admin <neispravimayas1@gmail.com>",
+    message: `<div style="background-color: lime; padding: 15px">
+                        Password recovery link for project "Cards for test":
+                        <a href='https://github.com/DinaSem/Dinas-Cards/#/change-pass/$token$'>
+                        link</a>
+                       </div >`
+}
 export const authAPI = {
 
     login(email: string, password: string, rememberMe: boolean) {
@@ -32,14 +31,18 @@ export const authAPI = {
     forgot(model: any) {
         return instance.post('auth/forgot', {model})
     },
-    // newpass(password: string, resetPasswordToken: string) {
-    //     return instance.post('auth/set-new-password', {password, resetPasswordToken})
-    // },
+    newpass(password: string, resetPasswordToken: string) {
+        return instance.post('auth/set-new-password', {password, resetPasswordToken})
+    },
 
 
 }
-export type RecoveryModelType = {
-    email: string
-    from: string
-    massage: string
+type RecoveryModelType = {
+    email: string,
+    from: string,
+    message: string
+}
+export type RecoverPassResponseType = {
+    info: string
+    error: string
 }
