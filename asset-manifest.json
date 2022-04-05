@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Dinas-Cards/static/css/main.2d20bded.css",
-    "main.js": "/Dinas-Cards/static/js/main.4f8e36b9.js",
+    "main.js": "/Dinas-Cards/static/js/main.36b9f4d0.js",
     "index.html": "/Dinas-Cards/index.html",
     "main.2d20bded.css.map": "/Dinas-Cards/static/css/main.2d20bded.css.map",
-    "main.4f8e36b9.js.map": "/Dinas-Cards/static/js/main.4f8e36b9.js.map"
+    "main.36b9f4d0.js.map": "/Dinas-Cards/static/js/main.36b9f4d0.js.map"
   },
   "entrypoints": [
     "static/css/main.2d20bded.css",
-    "static/js/main.4f8e36b9.js"
+    "static/js/main.36b9f4d0.js"
   ]
 }
