@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/DinaSem/Dinas-Cards/static/css/main.2d20bded.css",
-    "main.js": "/DinaSem/Dinas-Cards/static/js/main.2c136e06.js",
+    "main.js": "/DinaSem/Dinas-Cards/static/js/main.6d421202.js",
     "index.html": "/DinaSem/Dinas-Cards/index.html",
     "main.2d20bded.css.map": "/DinaSem/Dinas-Cards/static/css/main.2d20bded.css.map",
-    "main.2c136e06.js.map": "/DinaSem/Dinas-Cards/static/js/main.2c136e06.js.map"
+    "main.6d421202.js.map": "/DinaSem/Dinas-Cards/static/js/main.6d421202.js.map"
   },
   "entrypoints": [
     "static/css/main.2d20bded.css",
-    "static/js/main.2c136e06.js"
+    "static/js/main.6d421202.js"
   ]
 }
