@@ -7,7 +7,7 @@ const model: RecoveryModelType = {
     from: "test-front-admin <neispravimayas1@gmail.com>",
     message: `<div style="background-color: lime; padding: 15px">
                         Password recovery link for project "Cards for test":
-                        <a href='https://github.com/DinaSem/Dinas-Cards/#/change-pass/$token$'>
+                        <a href='https://DinaSem.github.io/Dinas-Cards/#/change-pass/$token$'>
                         link</a>
                        </div >`
 }
@@ -35,6 +35,9 @@ export const authAPI = {
         return instance.post <{ password: string, resetPasswordToken: string | undefined },
             AxiosResponse<RecoverPassResponseType>>
         (`/auth/set-new-password`, {password, resetPasswordToken})
+    },
+    updateUser(name: string, avatar:string) {
+        return instance.put<{ name: string, avatar:string}, AxiosResponse<ResponseType>>('auth/me', {name, avatar});
     },
 
 
