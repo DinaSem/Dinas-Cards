@@ -10,6 +10,7 @@ const LoginPage = () => {
     const[password, setPassword]= useState('12345678')
     const [rememberMe, setRememberMe] = useState<boolean>(false)
     const isLoggedIn = useSelector<AppStoreType,boolean>(state => state.login.isLoggedIn)
+    const error = useSelector<AppStoreType,string|null>(state => state.login.error)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -24,7 +25,7 @@ const EmailHandler = (e:ChangeEvent<HTMLInputElement>) => {
     }
     useEffect(() => {
         if (isLoggedIn) {
-            navigate(PATH.TEST)
+            navigate(PATH.PROFILE)
         } else return
     }, [navigate, isLoggedIn])
 
@@ -33,6 +34,7 @@ const EmailHandler = (e:ChangeEvent<HTMLInputElement>) => {
         <div>
 
             LOGIN PAGE
+            <div style={{color: "red", fontSize:"15px"}}>{error}</div>
             <div>
                 <input type={'text'}
                        value={email}

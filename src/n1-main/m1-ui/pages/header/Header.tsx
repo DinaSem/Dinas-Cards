@@ -7,6 +7,7 @@ import {logoutTC} from "../../../m2-bll/loginReducer";
 import {AppStoreType} from "../../../m2-bll/store";
 const Header = () => {
     const isLoggedIn = useSelector<AppStoreType,boolean>(state => state.login.isLoggedIn)
+    //const info = useSelector<AppStoreType,string|null>(state => state.login.info)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -15,9 +16,9 @@ const Header = () => {
     }
 
     // useEffect(() => {
-        // if (!isLoggedIn) {
-        //     navigate(PATH.LOGIN)
-        // } else return
+    //     if (!isLoggedIn) {
+    //         navigate(PATH.LOGIN)
+    //     } else return
     // }, [navigate, isLoggedIn])
 
     return (
@@ -48,6 +49,7 @@ const Header = () => {
                     <span className={``}>
                         <NavLink to={''} className={''} onClick={logOutHandler}>LogOut</NavLink>
                     </span>
+
                     {/*<li className={``}>*/}
                     {/*    <NavLink to={PATH.PACKS} className={''}>Packs</NavLink>*/}
                     {/*</li>*/}
