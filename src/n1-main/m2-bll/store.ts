@@ -4,6 +4,8 @@ import thunkMiddleware, { ThunkAction } from 'redux-thunk'
 import {registerReducer} from "./registerReducer";
 import {recoverReducer} from "../m3-dal/recoverReducer";
 import {packsReducer} from "./packsReducer";
+import {cardsReducer} from "./cardsReducer";
+import {cardsReducer1} from "./cardsReducer1";
 
 
 const reducers = combineReducers({
@@ -11,6 +13,8 @@ const reducers = combineReducers({
     register: registerReducer,
     recover: recoverReducer,
     packs: packsReducer,
+    cards: cardsReducer,
+    cards1: cardsReducer1,
 
 
 })

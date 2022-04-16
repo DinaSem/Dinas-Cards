@@ -31,7 +31,7 @@ export const PackItem = (props:TableItemPropsType)=>{
     return (
         <div >
             <span style={{cursor: "pointer", minWidth: "50px"}} onClick={() => navigate('/packs/' + props.pack._id)}>{props.pack.name}</span>
-            <span style={{margin: "10px", minWidth: "50px"}}>{props.pack.user_name}</span>
+            <span style={{margin: "10px", minWidth: "50px"}}>{props.pack.name}</span>
             <span style={{margin: "10px", minWidth: "50px"}}>{props.pack.cardsCount}</span>
             <span style={{margin: "10px", minWidth: "50px"}}> {props.pack.created}</span>
 

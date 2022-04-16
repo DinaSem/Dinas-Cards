@@ -8,6 +8,7 @@ import PasswordRecoveryPage from "../../../n2-features/f1-auth/a3-forgot/Passwor
 import ChangePasswordPage from "../../../n2-features/f1-auth/a4-setPass/ChangePasswordPage";
 import ProfilePage from "../../../n2-features/f1-auth/a5-profile/ProfilePage";
 import {PacksPage} from "../packs/PacksPage";
+import CardsPage from "../packs/CardsPage";
 
 
 const MainRoutes = () => {
@@ -25,7 +26,7 @@ const MainRoutes = () => {
                 <Route path={PATH.PASSWORD_RECOVERY}
                        element={<h2 style={{textAlign: "center"}}><PasswordRecoveryPage/></h2>}/>
                 <Route path={PATH.PACKS} element={<h2 style={{textAlign: "center"}}><PacksPage/></h2>}/>
-                {/*<Route path={PATH.CARDS} element={<h2 style={{textAlign: "center"}}><CardsPage/></h2>}/>*/}
+                <Route path={PATH.CARDS} element={<h2 style={{textAlign: "center"}}><CardsPage/></h2>}/>
                 {/*<Route path={'/404'} element={<h2 style={{textAlign: "center"}}><Error404/></h2>}/>*/}
                 {/*<Route path='*' element={<Navigate to={'/404'}/>}/>*/}
             </Routes>
