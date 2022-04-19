@@ -126,6 +126,7 @@ export const setCurrentPageAC = (currentPage: number) => (
 export const setPacksDataTC = (packsRequest: PacksGetRequestType):ThunkType =>
     (dispatch, getState) => {
     dispatch(loadingAC('loading'))
+        debugger
     packsAPI.setPacks({
         params:{
             pageCount:packsRequest.params.pageCount,
@@ -138,6 +139,7 @@ export const setPacksDataTC = (packsRequest: PacksGetRequestType):ThunkType =>
         }
     })
         .then((res) => {
+            debugger
             dispatch(sortPacksAC(packsRequest.params.sortPacks))
             dispatch(setPacksDataAC(res.data))
 
@@ -223,6 +225,7 @@ export const addPacksTC = (pack: PacksPostRequestType): ThunkType =>
         dispatch(loadingAC('loading'))
         packsAPI.postPacks(pack)
             .then((res) => {
+                debugger
                 dispatch(responseConfirmAC(true,
                     'addPack', 'Pack has been successfully added!'))
                 dispatch(setPacksDataTC({

@@ -47,20 +47,22 @@ export const PacksPage = () => {
     const changeCheckbox = () => {
         setChecked(!checked);
     }
+console.log('title', title)
 
     const addTitleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+        debugger
         setTitle(e.currentTarget.value)
     }
 
-    const addPacksOnClick = useCallback(() => {
-
+    const addPacksOnClick = () => {
+debugger
             dispatch(addPacksTC({
                 cardsPack: {
                     name: title
                 }
             }))
 
-    },[dispatch])
+    }
 
 // // Block for Delete pack
 //     const deletePackList = useCallback((packName: any, packId: string) => {
@@ -83,9 +85,6 @@ export const PacksPage = () => {
             dispatch(setPacksDataTC({
                 // briefly hardcoded 1 Cards request
                 params: {
-                    // packName: 'english',
-                    // pageCount: 5,
-                    // user_id: "622af9b229bee90004696543"
                     // @ts-ignore
                     user_id: user._id
                 }
