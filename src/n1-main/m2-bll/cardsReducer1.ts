@@ -123,14 +123,15 @@ export const getCardsBySearchTC = (params:{packId:string,search:string }):ThunkT
         })
 }
 
-export const addCardTC = (params:{packId:string, quest:string, answer:string}):ThunkType => (dispatch, getState) => {
+export const addCardTC = (params:{packId?:string, quest:string, answer:string}):ThunkType => (dispatch, getState) => {
     dispatch(loadingAC('loading'))
-    cardsAPI.addCard({cardsPack_id:params.packId, question: params.quest, answer:params.answer}).then(res => {
+    cardsAPI.addCard({cardsPack_id:params.packId, question: params.quest, answer:params.answer})
+        .then(res => {
         dispatch(getCardsTC({packId:params.packId}))
         }
     ).catch((err) => {
         dispatch(loadingAC('succeeded'))
-        
+
     })
 }
 export const deleteCardTC = (cardId:string):ThunkType => (dispatch, getState) => {
