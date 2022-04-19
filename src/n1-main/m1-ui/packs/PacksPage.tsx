@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, {ChangeEvent, ChangeEventHandler, useCallback, useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../m2-bll/store";
 import {PacksGetRequestType, PacksGetResponseDataType} from "../../m3-dal/packs-api";
@@ -36,25 +36,32 @@ import {useParams} from "react-router-dom";
 
 
 export const PacksPage = () => {
-const packs = useSelector<AppStoreType,PacksGetResponseDataType|undefined>(state => state.packs.packsData)
+    const packs = useSelector<AppStoreType, PacksGetResponseDataType | undefined>(state => state.packs.packsData)
 
     const packName = useSelector<AppStoreType, any>(state => state.packs.packName)
     const user = useSelector<AppStoreType>(state => state.login.user)
     const dispatch = useDispatch()
+    const [checked, setChecked] = useState(false);
+    const [title, setTitle] = useState<string>('anyPack');
 
+    const changeCheckbox = () => {
+        setChecked(!checked);
+    }
 
-        const [checked, setChecked] = useState(false);
+    const addTitleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setTitle(e.currentTarget.value)
+    }
 
-        const changeCheckbox=()=> {
-            setChecked(!checked);
-        }
-        const addPacksOnClick = () => {
-    dispatch(addPacksTC({
-        cardsPack: {
-            name: 'Dina-packs'
-        }
-    }))
-}
+    const addPacksOnClick = useCallback(() => {
+
+            dispatch(addPacksTC({
+                cardsPack: {
+                    name: title
+                }
+            }))
+
+    },[dispatch])
+
 // // Block for Delete pack
 //     const deletePackList = useCallback((packName: any, packId: string) => {
 //         dispatch(pickDeletePackAC(packName, packId))
@@ -71,23 +78,23 @@ const packs = useSelector<AppStoreType,PacksGetResponseDataType|undefined>(state
 // //-------------
 
 
-        
     useEffect(() => {
-if(checked){
-    dispatch(setPacksDataTC({
-        // briefly hardcoded 1 Cards request
-        params: {
-            // packName: 'english',
-            // pageCount: 5,
-            // user_id: "622af9b229bee90004696543"
-            // @ts-ignore
-            user_id: user._id
+        if (checked) {
+            dispatch(setPacksDataTC({
+                // briefly hardcoded 1 Cards request
+                params: {
+                    // packName: 'english',
+                    // pageCount: 5,
+                    // user_id: "622af9b229bee90004696543"
+                    // @ts-ignore
+                    user_id: user._id
+                }
+            }))
         }
-    }))
-}},[dispatch, setPacksDataTC,checked])
+    }, [dispatch, setPacksDataTC, checked])
 
     useEffect(() => {
-        if(!checked){
+        if (!checked) {
             dispatch(setPacksDataTC({
                 params: {
                     //packName: 'english',
@@ -95,15 +102,17 @@ if(checked){
                 }
             }))
         }
-    }, [dispatch, setPacksDataTC,checked])
+    }, [dispatch, setPacksDataTC, checked])
 
     return (
         <div>
             PacksPage
             <div>
-                <input style={{height: "20px", width: "20px"}} type="checkbox" checked={checked} onChange={changeCheckbox} />
+                <input style={{height: "20px", width: "20px"}} type="checkbox" checked={checked}
+                       onChange={changeCheckbox}/>
                 <span>My packs</span>
                 <span>
+                    <input type="text" value={title} onChange={addTitleOnChange}/>
                     <button style={{margin: " 0 20px"}} onClick={addPacksOnClick}>add</button>
                 </span>
 
@@ -113,10 +122,10 @@ if(checked){
             packs.cardPacks.map((pack) => {
                     return (
 
-                        <PackItem   key={pack._id}
+                        <PackItem key={pack._id}
                                   deletePackList={deletePack}
-                                  // editPackList={editPackList}
-                                  // learnPack={learnPack}
+                            // editPackList={editPackList}
+                            // learnPack={learnPack}
                                   pack={pack}
                         />
                     )
